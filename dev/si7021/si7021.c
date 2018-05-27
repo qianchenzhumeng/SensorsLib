@@ -208,9 +208,8 @@ static int8_t scmd(uint8_t cmd, uint32_t *pOut)
     return SENSORS_OK;
 
     fail:
-        I2C_DeInit(SI7021_I2C);
-        I2C_SoftwareResetCmd(SI7021_I2C, ENABLE); 
-        I2C1_Init();
+        I2C_AcknowledgeConfig(SI7021_I2C, DISABLE);
+        I2C_GenerateSTOP(SI7021_I2C, ENABLE);
         return SENSORS_ERROR;
 }
 

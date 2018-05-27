@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 #include "sensors.h"
 #include "si7021.h"
 #include "si7021_sensor.h"

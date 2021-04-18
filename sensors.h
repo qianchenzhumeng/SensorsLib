@@ -10,6 +10,7 @@
 #define SENSORS_ERROR    ((int)-1)
 #define CRC_ERROR       ((int)-2)
 
+#define SENSORS_INIT(sensor) (sensor).configure(SENSORS_HW_INIT, 0)
 #define SENSORS_ACTIVATE(sensor) (sensor).configure(SENSORS_ACTIVE, 1)
 #define SENSORS_DEACTIVATE(sensor) (sensor).configure(SENSORS_ACTIVE, 0)
 
@@ -18,7 +19,7 @@ const struct sensors_sensor name = { type, value, configure, status }
 
 struct sensors_sensor {
   char *        type;
-  int           (* value)     (int type, float *pValue);
+  int           (* value)     (int type, void *p_value);
   int           (* configure) (int type, int value);
   int           (* status)    (int type);
 };
